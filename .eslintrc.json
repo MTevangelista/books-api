@@ -28,7 +28,13 @@
         "json": "never"
       }
     ],
-    "no-console": "off"
+    "no-console": "off",
+    "lines-between-class-members": 0,
+    "no-useless-constructor": "off",
+    "@typescript-eslint/explicit-function-return-type": 1,
+    "@typescript-eslint/no-explicit-any": 2,
+    "no-empty-function": ["error", { "allow": ["constructors"] }],
+    "max-len": 0
   },
   "settings": {
     "import/resolver": {
