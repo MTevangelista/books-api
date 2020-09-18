@@ -29,6 +29,8 @@
       }
     ],
     "no-console": "off",
+    "import/no-unresolved": "off",
+    "class-methods-use-this": "off",
     "lines-between-class-members": 0,
     "no-useless-constructor": "off",
     "@typescript-eslint/explicit-function-return-type": 1,

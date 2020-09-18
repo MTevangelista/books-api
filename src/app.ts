@@ -2,7 +2,8 @@ import express from 'express';
 import bodyparser from 'body-parser';
 import cors from 'cors';
 
-import Database from './database/db';
+import Database from '@database/db';
+import routes from './routes';
 
 class App {
   public app: express.Application;
@@ -11,13 +12,13 @@ class App {
   public constructor() {
     this.app = express();
 
-    this.middlewares();
+    this.middleware();
     this.database = new Database();
     this.database.createConnection();
     this.routes();
   }
 
-  private middlewares(): void {
+  private middleware(): void {
     this.app.use(express.json());
     this.app.use(bodyparser.json());
     this.app.use(bodyparser.urlencoded({ extended: true }));
@@ -25,7 +26,7 @@ class App {
   }
 
   private routes(): void {
-    this.app.route('/').get((req, res) => res.status(200).json({ message: 'Hello World' }));
+    this.app.use(routes);
   }
 }
 

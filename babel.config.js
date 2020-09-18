@@ -12,7 +12,12 @@ module.exports = {
   ],
   plugins: [
     ['module-resolver', {
-      alias: {}
+      alias: {
+        '@controllers': './src/controllers',
+        '@repositories': './src/repositories',
+        '@database': './src/database',
+        '@models': './src/models',
+      }
     }]
   ],
   ignore: [
