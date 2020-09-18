@@ -22,6 +22,21 @@ class BookRepository {
     await book.save();
   }
 
+  public async update(_id: string, {
+    imageUrl, author, title, theme, description, createdAt,
+  }): Promise<void> {
+    await Book.findByIdAndUpdate(_id, {
+      $set: {
+        imageUrl,
+        author,
+        title,
+        theme,
+        description,
+        createdAt,
+      },
+    });
+  }
+
   public async verifyIfSlugExists(slug: string): Promise<Document> {
     const res = await Book.findOne({ slug });
     return res;

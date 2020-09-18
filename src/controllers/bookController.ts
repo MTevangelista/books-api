@@ -18,8 +18,8 @@ class BookController {
     }
   }
 
-  // @route    GET /api/books
-  // @desc     LIST book
+  // @route    GET /api/books/:slug
+  // @desc     LIST book by slug
   // @access   Public
   public async getBySlug(req: Request, res: Response): Promise<Response> {
     const { slug } = req.params;
@@ -61,6 +61,34 @@ class BookController {
     try {
       await bookRepository.insert(book);
       return res.status(201).json({ message: 'Book created with success' });
+    } catch (err) {
+      return res.status(500).json({
+        message: err,
+      });
+    }
+  }
+
+  // @route    PUT /api/books/:_id
+  // @desc     EDIT book
+  // @access   Public
+  public async put(req: Request, res: Response): Promise<Response> {
+    const { _id } = req.params;
+    const {
+      imageUrl, author, title, theme, description, createdAt,
+    } = req.body;
+
+    const newBook = {
+      imageUrl,
+      author,
+      title,
+      theme,
+      description,
+      createdAt,
+    };
+
+    try {
+      await bookRepository.update(_id, newBook);
+      return res.status(201).json({ message: 'Successfully updated book!' });
     } catch (err) {
       return res.status(500).json({
         message: err,
