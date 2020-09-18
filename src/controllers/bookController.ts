@@ -4,6 +4,20 @@ import bookRepository from '@repositories/bookRepository';
 class BookController {
   constructor() { }
 
+  // @route    GET /api/book
+  // @desc     LIST book
+  // @access   Public
+  public async get(req: Request, res: Response): Promise<Response> {
+    try {
+      const books = await bookRepository.getAll();
+      return res.json(books);
+    } catch (err) {
+      return res.status(500).json({
+        message: err,
+      });
+    }
+  }
+
   // @route    POST /api/book
   // @desc     CREATE book
   // @access   Public
