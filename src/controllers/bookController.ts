@@ -95,6 +95,22 @@ class BookController {
       });
     }
   }
+
+  // @route    DELETE /api/books/:_id
+  // @desc     DELETE book
+  // @access   Public
+  public async delete(req: Request, res: Response): Promise<Response> {
+    const { _id } = req.params;
+
+    try {
+      await bookRepository.delete(_id);
+      return res.status(201).json({ message: 'Successfully deleted book!' });
+    } catch (err) {
+      return res.status(500).json({
+        message: err,
+      });
+    }
+  }
 }
 
 export default new BookController();

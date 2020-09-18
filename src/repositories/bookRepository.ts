@@ -37,6 +37,10 @@ class BookRepository {
     });
   }
 
+  public async delete(_id: string): Promise<void> {
+    await Book.findByIdAndRemove(_id);
+  }
+
   public async verifyIfSlugExists(slug: string): Promise<Document> {
     const res = await Book.findOne({ slug });
     return res;
