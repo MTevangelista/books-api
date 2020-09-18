@@ -18,6 +18,13 @@ const BookSchema = new Schema({
     required: true,
     trim: true,
   },
+  slug: {
+    type: String,
+    required: true,
+    trim: true,
+    index: true,
+    unique: true,
+  },
   theme: {
     type: String,
     required: true,
@@ -28,25 +35,9 @@ const BookSchema = new Schema({
     required: true,
     trim: true,
   },
-  Publisher: {
+  createdAt: {
     type: String,
     required: true,
-    trim: true,
-  },
-  isbn: {
-    type: Number,
-    required: true,
-    trim: true,
-  },
-  totalPages: {
-    type: Number,
-    required: true,
-    trim: true,
-  },
-  createdAt: {
-    type: Date,
-    required: true,
-    default: Date.now,
   },
 });
 
