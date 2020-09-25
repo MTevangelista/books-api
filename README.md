@@ -77,11 +77,7 @@ books-api/
 │     ├── controllers/
 │     │            └── PlaceController.ts
 │     ├── database/
-│     │         ├── migrations/
-│     │         │           ├── 00_create_places.ts
-│     │         │           └── 01_create_place_schedule.ts
-│     │         ├── index.ts
-│     │         └── database.sqlite
+│     │          └── db.ts
 │     ├── models/
 │     │       └── book.ts
 │     │
